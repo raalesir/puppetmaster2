@@ -1,0 +1,16 @@
+#require "facter"
+
+
+Facter.add("hadoop_hdfs_name_dirs") do
+  setcode { Dir.glob('/data/1/dfs/nn').join(',') }
+end
+
+
+
+Facter.add("hadoop_mapred_local_dirs") do
+  setcode { Dir.glob('/data/*/mapred/local/').join(',') }
+end
+
+Facter.add("hadoop_hdfs_data_dirs") do
+  setcode { Dir.glob('/data/*/dfs/dn/').join(',') }
+end

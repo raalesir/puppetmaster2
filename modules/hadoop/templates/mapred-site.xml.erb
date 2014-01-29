@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+
+  <property>
+    <name>mapred.local.dir</name>
+    <value><%= @hadoop_mapred_local_dirs_erb.join(',') %> </value>
+  </property>
+  
+
+ <!-- TaskTracker DistributedCache configuration -->
+	<property>
+		<name>mapreduce.tasktracker.cache.local.size</name>
+		<value>10737418240</value> 
+		<description>The number of bytes to allocate in each local TaskTracker directory for holding Distributed Cache data.</description>
+	</property>
+
+
+	 <property>
+                <name>mapred.child.java.opts</name>
+                <value>-Xmx3500m</value>
+        </property>
+
+	 <property>
+                <name>mapred.child.ulimit</name>
+                <value>6291456</value>
+        </property>
+
+         <property>
+                <name>io.sort.mb</name>
+                <value>300</value>
+        </property>
+
+         
+	<property>
+		<name>mapred.reduce.parallel.copies</name>
+		<value>10</value>
+	</property>
+
+<!--
+	<property>
+		<name>mapred.jobtracker.taskScheduler</name>
+		<value>org.apache.hadoop.mapred.FairScheduler</value>
+	</property>
+
+-->
+	<property>
+		<name>io.sort.factor</name>
+		<value>64</value>
+	</property>
+
+	<property>
+		<name>mapred.reduce.slowstart.completed.maps</name>
+		<value>0.5</value>
+	</property>
+
+
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/tmp/hadoop</value>
+    <final>true</final>
+  </property>
+
+
+	<property>
+		<name>mapred.system.dir</name>
+		<value>${hadoop.tmp.dir}/mapred/system </value>
+	</property>
+
+
+  <property>
+    <name>mapred.reduce.tasks.speculative.execution</name>
+    <value>false</value>
+  </property>
+    
+
+  <property>
+    <name>mapred.job.tracker</name>
+    <value>master.hadoop.vm:8020</value>
+  </property>
+
+  <property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value> 3 </value>
+ <!-- <value> <%= processorcount %> </value> -->
+    <description>The maximum number of tasks that will be run simultaneously by a
+    a task tracker
+    </description>
+  </property>
+
+  <property>
+    <name>mapred.tasktracker.reduce.tasks.maximum</name>
+    <value> <%= physicalprocessorcount %> </value>
+    <description>The maximum number of tasks that will be run simultaneously by a
+      a task tracker
+    </description>
+  </property>
+
+  <property>
+    <name>mapred.queue.names</name>
+    <value>default</value>
+    <description>Names of queues</description>
+  </property>
+  
+</configuration>

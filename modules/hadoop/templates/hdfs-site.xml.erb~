@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value><%= @hadoop_hdfs_name_dirs %></value>
+	</property>
+
+
+<!--
+	<property>
+		<name>dfs.permissions.supergroup</name>
+		<value>hadoop</value>
+	</property>
+
+-->
+
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value><%= @hadoop_hdfs_data_dirs %></value>
+	</property>
+
+	<property>
+	</property>
+
+</configuration>
