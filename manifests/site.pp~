@@ -1,0 +1,28 @@
+
+##import "util"
+
+group { "puppet":
+  ensure => "present",
+}
+ 
+#exec { 'apt-get update':
+#  command => '/usr/bin/apt-get update',
+#}
+
+# jdk installation
+package { "openjdk-7-jdk" :
+  ensure => "present",
+  require => Exec['apt-get update']
+}
+
+
+#Exec { path => [/usr/lib/jvm/java-7-openjdk-amd64/
+#exec {'add_java_to_path':
+#	command => 'export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64'
+#export PATH=$JAVA_HOME/bin:$PATH
+
+#require "facter"
+import "nodes.pp"
+
+
+

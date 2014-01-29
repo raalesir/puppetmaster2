@@ -1,0 +1,45 @@
+
+
+group {"hadoop":
+	ensure	=> "present",
+}
+
+user { 'hadoopuser':
+	home       => '/home/hadoopuser',   
+	managehome => true,            
+	groups     => 'hadoop',       
+	password   => 'hadoop',
+	require	=>Group["hadoop"] 
+}
+
+#class testFiles {
+#file { '/home/dummy/test':
+#	ensure   => file,
+#	owner    => dummy,
+#	group    => dummy,
+#	mode     => 644,
+#	source   => "puppet:///modules/test/test",
+#	require => User['dummy']
+#}
+
+#   service { 'puppet':
+#     ensure    => stopped,
+#     enable    => false,
+#   }
+
+#}
+
+
+exec { "apt-get update":
+	command     => "/usr/bin/apt-get -q -q update",
+	logoutput   => false,
+	refreshonly => true,
+}
+
+
+# jdk installation
+package { "openjdk-7-jdk" :
+  ensure => "present",
+  require => Exec['apt-get update']
+}
+
