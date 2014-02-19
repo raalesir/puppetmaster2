@@ -12,9 +12,9 @@ class hadoop::tasktracker {
 		#"/data/2/mapred", "/data/2/mapred/local", "/data/3/mapred", "/data/3/mapred/local"]:
 		ensure  => directory,
 		owner   => mapred,	
-		group   => hadoop,                                                                                                  
+		group   => mapred, # was hadoop,                                                                                                  
 		mode    => 755,
-		recurse	=> true,
+#		recurse	=> true,
 		require => Package["hadoop-0.20-mapreduce-tasktracker"],
 	}
 
