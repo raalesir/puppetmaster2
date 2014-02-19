@@ -26,6 +26,7 @@ $exclude_hosts_file                     = ["/etc/hadoop/conf.cluster/excludes"]
 include myrna
 include cloudgene
 include crossbow
+include htseq #-0.5.4p5"
 #include adduser
 import "nodes.pp"
 
